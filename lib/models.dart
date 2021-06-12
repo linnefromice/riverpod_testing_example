@@ -1,5 +1,4 @@
-import 'dart:ui';
-
+import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 CategoryList createCategoryList(List values) {
@@ -14,7 +13,10 @@ class Category {
   final String name;
   final Color color;
 
-  Category(this.name, this.color);
+  Category({
+    required this.name,
+    required this.color
+  });
 }
 
 class CategoryList extends StateNotifier {
