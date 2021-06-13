@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-CategoryList createCategoryList(List values) {
-  final Map categories = Map();
+CategoryList createCategoryList(final List<Category> values) {
+  final Map<Category, bool> categories  = Map();
   values.forEach((value) {
     categories.putIfAbsent(value, () => false);
   });
@@ -19,11 +19,14 @@ class Category {
   });
 }
 
-class CategoryList extends StateNotifier {
-  CategoryList(Map state) : super(state);
+class CategoryList extends StateNotifier<Map<Category, bool>> {
+  CategoryList(Map<Category, bool> state) : super(state);
 
   void toggle(final Category item) {
-    state[item] = !state[item];
-    state = state;
+    final value = state[item];
+    if (value is bool) {
+      state[item] = !value;
+      state = state;
+    }
   }
 }
