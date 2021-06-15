@@ -17,6 +17,7 @@ class App extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: HomePage(),
     );
@@ -37,7 +38,16 @@ class _State extends State<HomePage> {
       appBar: AppBar(
         title: Text('Flutter Demo Home Page'),
       ),
-      body: SelectedCategories()
+      body: Column(
+        children: [
+          CategoryFilter(),
+          Container(
+            color: Colors.green,
+            height: 2,
+          ),
+          SelectedCategories()
+        ],
+      )
     );
   }
 }
